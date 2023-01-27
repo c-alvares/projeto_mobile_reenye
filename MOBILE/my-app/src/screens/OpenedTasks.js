@@ -20,7 +20,7 @@ export default function App() {
   }, [])
 
   const listTasks = () => {
-    fetch("http://localhost:3000/listartarefas")
+    fetch("http://localhost:3000/tarefasabertas")
     .then((response) => { return response.json() })
     .then((data) => { 
       setTask(data);
