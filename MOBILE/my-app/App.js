@@ -1,11 +1,12 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TextInput } from "react-native";
 
 import styles from "./src/styles/style";
 
-import ButtonFinish from "./src/components/ButtonFinish";
-import ButtonCancel from "./src/components/ButtonCancel";
+// import ButtonFinish from "./src/components/ButtonFinish";
+// import ButtonCancel from "./src/components/ButtonCancel";
+import ButtonSubmit from "./src/components/ButtonSubmit";
 
 export default function App() {
 
@@ -13,10 +14,11 @@ export default function App() {
   const [task, setTask] = useState([]);
 
   useEffect(() => {
-    setInterval(() => {
-      console.log("Atualizar Lista")
-      listTasks();
-    }, 1500);
+    // setInterval(() => {
+    //   console.log("Atualizar Lista")
+    //   listTasks();
+    // }, 1500);
+    listTasks();
   }, [])
 
   const listTasks = () => {
@@ -28,54 +30,17 @@ export default function App() {
   } 
 
 
-// Função para finalizar pedido
-  const finishTask = (id) => {
-    // console.log(clientOrder);
-    const data = {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id_tarefa: id }),
-    }
-
-    fetch("http://localhost:3000/finalizartarefa", data)
-      .then((response) => response.status)
-      .then((resp) => {
-        if (resp === 200) {
-          console.log("Pedido Enviado");
-          listTasks();
-        }else {
-          console.log(resp.status);
-        }
-      })
-  }
-
-// Função para finalizar pedido
-  const cancelTask = (id) => {
-    // console.log(clientOrder);
-    const data = {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id_tarefa: id }),
-    }
-
-    fetch("http://localhost:3000/cancelartarefas", data)
-      .then((response) => response.status)
-      .then((resp) => {
-        if (resp === 200) {
-          console.log("Pedido Enviado");
-          listTasks();
-        }else {
-          console.log(resp.status);
-        }
-      })
-  }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Pedidos a Preparar</Text>
+        <Text style={styles.headerText}>Todas as tarefas</Text>
       </View>
-
+      <View>
+        <TextInput style={styles.subscribeInput}></TextInput>
+        <TextInput style={styles.subscribeInput}></TextInput>
+        <ButtonSubmit value="Cadastrar Nova Tarefa"></ButtonSubmit>
+      </View>
       {task.map((toDo, index) => {
         return (
           <View style={styles.boxOrder} key={index}>
@@ -85,14 +50,14 @@ export default function App() {
             <Text style={styles.orderData}>Horário de Término: {toDo.hora_fim}</Text>
             <Text style={styles.orderData}>Status: {toDo.situacao}</Text>
 
-            <ButtonFinish
+            {/* <ButtonFinish
               value="Finalizar"
               onPress={ () => { finishTask(toDo.id_tarefa) } }>
             </ButtonFinish>
             <ButtonCancel
               value="Cancelar"
               onPress={ () => { cancelTask(toDo.id_tarefa) } }>
-            </ButtonCancel>
+            </ButtonCancel> */}
           </View>
         );
       })}
