@@ -14,11 +14,28 @@ export default function App() {
   const [description, setDescription] = useState([]);
   const [time, setTime] = useState([]);
 
-  const submitTask = (data1, data2) => {
-
-    
-
+  const submitTask = (value1, value2) => {
+    // console.log(data1, data2)
+    const data = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(
+        {
+          descricao: value1,
+          hora_inicio: value2
+        })
+    }
+    fetch("http://localhost:3000/criartarefa", data)
+      .then((response) => response.status)
+      .then((resp) => {
+        if (resp === 200) {
+          console.log("Pedido Cadastrado");
+        } else {
+          console.log(resp.status)
+        }
+      })
   }
+
 
 
   // Consumo da API para importação dos pedidos a serem preparados
@@ -49,12 +66,12 @@ export default function App() {
       </View>
       <View>
         <TextInput style={styles.subscribeInput}
-          onChangeText={setDescription}
+          onChangeText={(value) => { setDescription(value) }}
           placeholder="Descrição"
           placeholderTextColor="#E4DDB3">
         </TextInput>
         <TextInput style={styles.subscribeInput}
-          onChangeText={setTime}
+          onChangeText={(value) => { setTime(value) }}
           placeholder="Horário de Início"
           placeholderTextColor="#E4DDB3">
         </TextInput>
