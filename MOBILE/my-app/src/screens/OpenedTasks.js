@@ -2,12 +2,12 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { View, Text } from "react-native";
 
-import styles from "./src/styles/style";
+import styles from "../styles/style";
 
-import ButtonFinish from "./src/components/ButtonFinish";
-import ButtonCancel from "./src/components/ButtonCancel";
+import ButtonFinish from "../components/ButtonFinish";
+import ButtonCancel from "../components/ButtonCancel";
 
-export default function App() {
+export default function OpenedTasks() {
 
 // Consumo da API para importação dos pedidos a serem preparados
   const [task, setTask] = useState([]);
@@ -49,7 +49,7 @@ export default function App() {
       })
   }
 
-// Função para finalizar pedido
+// Função para cancelar pedido
   const cancelTask = (id) => {
     // console.log(clientOrder);
     const data = {
