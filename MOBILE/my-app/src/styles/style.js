@@ -32,7 +32,13 @@ export default StyleSheet.create({
         color: '#FFF',
         padding: '4px'
     },
-
+    subscribeInput: {
+      height: '50px',
+      marginHorizontal: '15px',
+      marginVertical: '10px',
+      borderRadius: '10px',
+      backgroundColor: '#FFF',
+    },
 
 // Components    
 btn1: {
@@ -61,6 +67,18 @@ btn1: {
     fontWeight: "bold",
     fontSize: "17px",
     color: "#FFF",
-    
+  },
+  btn3: {
+    height: "50px",
+    borderRadius: "10px",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "15px",
+    backgroundColor: "#008000"
+  },
+  textBtn3: {
+    fontWeight: "bold",
+    fontSize: "17px",
+    color: "#FFF",
   },
 });
