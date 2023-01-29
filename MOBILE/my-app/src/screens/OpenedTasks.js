@@ -9,7 +9,7 @@ import ButtonCancel from "../components/ButtonCancel";
 
 export default function OpenedTasks() {
 
-// Consumo da API para importação dos pedidos a serem preparados
+// Consumo da API para importação das tarefas abertas
   const [task, setTask] = useState([]);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function OpenedTasks() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Pedidos a Preparar</Text>
+        <Text style={styles.headerText}>Tarefas em Aberto</Text>
       </View>
 
       {task.map((toDo, index) => {
