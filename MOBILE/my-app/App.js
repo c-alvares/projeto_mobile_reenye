@@ -10,7 +10,18 @@ import ButtonSubmit from "./src/components/ButtonSubmit";
 
 export default function App() {
 
-// Consumo da API para importação dos pedidos a serem preparados
+  // Recebimento dos dados inseridos nos inputs e cadastro de nova tarefa
+  const [description, setDescription] = useState([]);
+  const [time, setTime] = useState([]);
+
+  const submitTask = (data1, data2) => {
+
+    
+
+  }
+
+
+  // Consumo da API para importação dos pedidos a serem preparados
   const [task, setTask] = useState([]);
 
   useEffect(() => {
@@ -23,11 +34,11 @@ export default function App() {
 
   const listTasks = () => {
     fetch("http://localhost:3000/listartarefas")
-    .then((response) => { return response.json() })
-    .then((data) => { 
-      setTask(data);
-    })
-  } 
+      .then((response) => { return response.json() })
+      .then((data) => {
+        setTask(data);
+      })
+  }
 
 
 
@@ -37,9 +48,20 @@ export default function App() {
         <Text style={styles.headerText}>Todas as tarefas</Text>
       </View>
       <View>
-        <TextInput style={styles.subscribeInput}></TextInput>
-        <TextInput style={styles.subscribeInput}></TextInput>
-        <ButtonSubmit value="Cadastrar Nova Tarefa"></ButtonSubmit>
+        <TextInput style={styles.subscribeInput}
+          onChangeText={setDescription}
+          placeholder="Descrição"
+          placeholderTextColor="#E4DDB3">
+        </TextInput>
+        <TextInput style={styles.subscribeInput}
+          onChangeText={setTime}
+          placeholder="Horário de Início"
+          placeholderTextColor="#E4DDB3">
+        </TextInput>
+        <ButtonSubmit
+          value="Cadastrar Nova Tarefa"
+          onPress={() => { submitTask(description, time) }}>
+        </ButtonSubmit>
       </View>
       {task.map((toDo, index) => {
         return (
