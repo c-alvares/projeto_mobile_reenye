@@ -11,14 +11,14 @@ datasource db {
 }
 
 model estatus {
-  id_status Int @id default(autoincrement())
+  id_status Int @id @default(autoincrement())
   situacao String
 }
 
 model tarefas {
-  id_tarefa Int @id default(autoincrement())
+  id_tarefa Int @id @default(autoincrement())
   descricao String
   hora_inicio DateTime @db.Time()
   hora_fim DateTime @db.Time()
-  situacao Int
+  situacao estatus @relation(fields: [situacao], references: [id_status])
 }
