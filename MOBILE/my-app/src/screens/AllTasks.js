@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 
 import styles from "../styles/style";
 
@@ -28,7 +28,7 @@ export default function AllTasks() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Todas as tarefas</Text>
       </View>
@@ -44,6 +44,6 @@ export default function AllTasks() {
           </View>
         );
       })}
-    </View>
+    </ScrollView>
   );
 }
