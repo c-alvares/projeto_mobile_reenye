@@ -4,31 +4,33 @@ import { View, Text } from "react-native";
 
 import styles from "../styles/style";
 
-export default function FinishedTasks() {
 
-// Consumo da API para importação das tarefas finalizadas
+export default function AllTasks() {
+
+
+  // Consumo da API para importação de todos as tarefas
   const [task, setTask] = useState([]);
 
   useEffect(() => {
     // setInterval(() => {
     //   console.log("Atualizar Lista")
     //   listTasks();
-    // }, 15000);
+    // }, 1500);
     listTasks();
   }, [])
 
   const listTasks = () => {
-    fetch("http://localhost:3000/tarefasfinalizadas")
-    .then((response) => { return response.json() })
-    .then((data) => { 
-      setTask(data);
-    })
-  } 
+    fetch("http://localhost:3000/listartarefas")
+      .then((response) => { return response.json() })
+      .then((data) => {
+        setTask(data);
+      })
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Tarefas Finalizadas</Text>
+        <Text style={styles.headerText}>Todas as tarefas</Text>
       </View>
 
       {task.map((toDo, index) => {

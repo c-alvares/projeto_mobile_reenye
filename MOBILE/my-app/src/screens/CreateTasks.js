@@ -4,9 +4,9 @@ import { View, Text, TextInput } from "react-native";
 
 import styles from "../styles/style";
 
-import ButtonSubmit from "./src/components/ButtonSubmit";
+import ButtonSubmit from "../components/ButtonSubmit";
 
-export default function OpenedTasks() {
+export default function CreateTasks() {
 
   // Recebimento dos dados inseridos nos inputs e cadastro de nova tarefa
   const [description, setDescription] = useState([]);

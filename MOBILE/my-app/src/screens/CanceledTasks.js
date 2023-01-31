@@ -10,10 +10,11 @@ export default function CanceledTasks() {
   const [task, setTask] = useState([]);
 
   useEffect(() => {
-    setInterval(() => {
-      console.log("Atualizar Lista")
-      listTasks();
-    }, 1500);
+    // setInterval(() => {
+    //   console.log("Atualizar Lista")
+    //   listTasks();
+    // }, 15000);
+    listTasks();
   }, [])
 
   const listTasks = () => {
