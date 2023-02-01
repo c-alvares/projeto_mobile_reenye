@@ -42,7 +42,7 @@ export default function OpenedTasks() {
       .then((response) => response.status)
       .then((resp) => {
         if (resp === 200) {
-          console.log("Pedido Enviado");
+          console.log("Tarefa Finalizada");
           listTasks();
         }else {
           console.log(resp.status);
@@ -63,7 +63,7 @@ export default function OpenedTasks() {
       .then((response) => response.status)
       .then((resp) => {
         if (resp === 200) {
-          console.log("Pedido Enviado");
+          console.log("Tarefa Cancelada");
           listTasks();
         }else {
           console.log(resp.status);
