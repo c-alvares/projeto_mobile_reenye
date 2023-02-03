@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { View, Text, TextInput } from "react-native";
 
 import styles from "../styles/style";
@@ -12,15 +12,15 @@ export default function CreateTasks() {
   const [description, setDescription] = useState([]);
   const [time, setTime] = useState([]);
 
-  const submitTask = (value1, value2) => {
+  const submitTask = () => {
     // console.log(data1, data2)
     const data = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(
         {
-          descricao: value1,
-          hora_inicio: value2
+          descricao: description,
+          hora_inicio: time
         })
     }
     fetch("http://localhost:3000/criartarefa", data)
@@ -28,6 +28,7 @@ export default function CreateTasks() {
       .then((resp) => {
         if (resp === 200) {
           console.log("Pedido Cadastrado");
+          location.reload();
         } else {
           console.log(resp.status)
         }
@@ -52,7 +53,7 @@ export default function CreateTasks() {
         </TextInput>
         <ButtonSubmit
           value="Cadastrar Nova Tarefa"
-          onPress={() => { submitTask(description, time) }}>
+          onPress={() => { submitTask() }}>
         </ButtonSubmit>
       </View>
     </View>
